@@ -53,7 +53,7 @@ export default function Navbar() {
               <Dropdown.Item>
                 <Link to="/">
                   <Icon name="book" />
-                  Material
+                  Resources
                 </Link>
               </Dropdown.Item>
               {logIn ? (
@@ -139,7 +139,7 @@ export default function Navbar() {
             <Menu.Item>
               <Link to="/">
                 <Icon name="book" />
-                Material
+                Resources
               </Link>
             </Menu.Item>
             {logIn ? (
