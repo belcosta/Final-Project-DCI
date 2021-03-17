@@ -69,7 +69,7 @@ export const getResources = () => async (dispatch) => {
         type: "GET_RESOURCES",
         payload: res.data,
       });
-      console.log("data from action", res.data);
+      console.log("data from getResource", res.data);
     })
     .catch((error) => {
       dispatch({

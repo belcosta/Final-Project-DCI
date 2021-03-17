@@ -15,7 +15,10 @@ import {
   CardMeta,
   Item,
   CardDescription,
+  Label,
+  Icon,
 } from "semantic-ui-react";
+import "./resource.css";
 
 // Gets reference ID as props.data.id
 const Resource = (props) => {
@@ -52,7 +55,7 @@ const Resource = (props) => {
           <Card.Header
             style={{ color: "white", padding: "10px", textAlign: "center" }}
           >
-            Resource{" "}
+            {props.data.title}
           </Card.Header>
         </CardContent>
         <Card
@@ -66,17 +69,19 @@ const Resource = (props) => {
           <CardContent>
             <Grid>
               <GridRow>
-                <CardHeader
-                  style={{
-                    margin: "auto",
-                    fontWeight: "bolder",
-                    fontSize: "15px",
-                    padding: "10px",
-                  }}
-                >
-                  {props.data.title}
-                </CardHeader>
+                <Grid.Column width={13}>
+                  <Rating
+                    rating={props.data.rating}
+                    num_ratings={props.data.num_ratings}
+                    resourceId={props.data._id}
+                    size="large"
+                    icon="star"
+                    defaultRating={5}
+                    maxRating={5}
+                  />
+                </Grid.Column>
                 <Options
+                  width={3}
                   style={{
                     margin: "10px",
                     fontSize: "20px",
@@ -88,15 +93,6 @@ const Resource = (props) => {
                 />
               </GridRow>
             </Grid>
-            <Rating
-              rating={props.data.rating}
-              num_ratings={props.data.num_ratings}
-              resourceId={props.data._id}
-              size="large"
-              icon="star"
-              defaultRating={5}
-              maxRating={5}
-            />
             <Grid>
               <GridRow
                 style={{
@@ -109,11 +105,23 @@ const Resource = (props) => {
                   {" "}
                   {props.data.category.map((item, index) => {
                     let name = item[0].toUpperCase() + item.substring(1);
-                    return <span key={index}>{name}</span>;
+                    return (
+                      <Label key={index} className={`label-${item}`}>
+                        {name}
+                      </Label>
+                    );
                   })}
                 </CardMeta>
                 <Item floated="right" size="mini">
-                  {props.data.paid ? "paid" : "free"}
+                  {props.data.paid ? (
+                    <span>
+                      Paid <Icon name="dollar sign" color="green" />
+                    </span>
+                  ) : (
+                    <span>
+                      Free <Icon name="checkmark" color="green" />
+                    </span>
+                  )}
                 </Item>
               </GridRow>
             </Grid>
@@ -141,7 +149,17 @@ const Resource = (props) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <CardMeta> {props.data.num_views} Views</CardMeta>
+                  <Label
+                    as="a"
+                    color="blue"
+                    href={`${props.data.link}`}
+                    target="_blank"
+                  >
+                    <Icon name="linkify" />
+                    <Label.Detail style={{ fontSize: "1.2rem" }}>
+                      Go to original Page{" "}
+                    </Label.Detail>
+                  </Label>
                 </GridRow>
                 <CardDescription style={{ margin: "10px" }}>
                   {props.data.description}

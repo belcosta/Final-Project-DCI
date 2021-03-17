@@ -29,12 +29,14 @@ router.get("/search/:term", (req, res, next) => {
 
 //search for specific data to display on HOME (dashboard)
 router.get("/dashboard", (req, res, next) => {
-  const resources = Resource.find({ category: "frontend" })
+  const resources = Resource.find()
     .populate("user")
     .populate({
       path: "comments",
       populate: { path: "user" },
     })
+    .sort({ date: -1 })
+    .limit(3)
     .then((resources) => res.json(resources))
     .catch((err) => res.send(err));
 });
@@ -124,15 +126,15 @@ router.get("/resource/:resource_id", (req, res, next) => {
 });
 
 //this MiddleWare is protecting all the routes down Below
-router.use((req, res, next) => {
-  if (req.session.user) {
-    console.log(req.session.user);
-    next();
-  } else {
-    console.log("error on middleware");
-    res.sendStatus(401);
-  }
-});
+// router.use((req, res, next) => {
+//   if (req.session.user) {
+//     console.log(req.session.user);
+//     next();
+//   } else {
+//     console.log("error on middleware");
+//     res.sendStatus(401);
+//   }
+// });
 
 router.post("/rating", (req, res, next) => {
   const rate = req.body.rate;

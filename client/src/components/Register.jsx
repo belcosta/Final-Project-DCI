@@ -255,7 +255,7 @@ export default function Register() {
                   className="ui labeled icon button"
                   type="submit"
                 >
-                  <i class="address card icon"></i>
+                  <i className="address card icon"></i>
                   Register
                 </Button>
               </Form>

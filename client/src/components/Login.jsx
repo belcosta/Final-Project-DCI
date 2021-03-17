@@ -25,7 +25,7 @@ export default function Login() {
   };
 
   const notifyError = () => {
-    toast.error("Your password is wrong! please try again!", {
+    toast.error("Either your password or username is wrong!", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 2000,
     });
@@ -114,8 +114,10 @@ export default function Login() {
                           dispatch(userLogin(data));
                           if (data.logIn === true) {
                             sessionStorage.setItem("email", data.email);
+                            //successfully login
                             notify();
                           } else {
+                            //you have an error
                             notifyError();
                             history.push("/login");
                           }

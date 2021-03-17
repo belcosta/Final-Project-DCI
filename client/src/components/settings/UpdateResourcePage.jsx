@@ -10,7 +10,7 @@ export default function UpdateResourcePage() {
     let url = window.location.href.split("/");
     const resourceId = url[url.length - 1];
     axios
-      .get(`http://localhost:5000/resources/resource/${resourceId}`)
+      .get(`/resources/resource/${resourceId}`)
       .then(async (res) => {
         await setResource(res.data);
         console.log("resource updated?", resource);

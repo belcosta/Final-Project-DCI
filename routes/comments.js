@@ -10,6 +10,22 @@ const Comment = require("../Models/Comment");
     res.sendStatus(401);
   }
 });  */
+
+//home page
+//get last two comments 
+router.get("/", (req, res) => {
+  let comments = Comment.find()
+    .populate("user", "username") 
+   .populate("resource","title")
+    .populate("resource","_id") 
+    .sort({ date: -1 })
+    .limit(2)
+    .then((resp) => res.json(resp))
+    .catch((err) => res.send(err));
+
+    });
+
+
 router.post("/", (req, res, next) => {
   const {user, resource, text} = req.body;
   const newComment = new Comment({

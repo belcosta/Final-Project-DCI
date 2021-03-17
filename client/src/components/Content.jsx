@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import Resource from "./Resource/Resource";
 import PropTypes from "prop-types";
 import { getResources } from "../redux/actions";
+import { useHistory } from "react-router-dom";
 
 import {
   Button,
@@ -20,50 +20,16 @@ import "./Content.css";
 const Content = ({ getResources, resources, filter }) => {
   // When page loads for the first time, load resources from the database
   // into the Redux store. From there they are displayed with React.
-  const [firstPageLoad, setFirstPageLoad] = useState(true);
+  const searchedResources = useSelector((state) => state.searchedResources);
   const update = useSelector((state) => state.update);
   const error = useSelector((state) => state.error);
+  const logIn = useSelector((state) => state.logIn);
+  const history = useHistory();
 
   useEffect(() => {
-    if (firstPageLoad) {
-      getResources();
-      console.log(resources);
-      setFirstPageLoad(false);
-    }
-  }, [firstPageLoad, update, resources, getResources]);
-
-  useEffect(() => {
+    console.log(searchedResources);
     getResources();
   }, [update, getResources]);
-  // TODO: once a Search or a Filter is applied, change the display accordingly
-
-  // PAGINATION
-  // const [pagination, setPagination] = useState({
-  //   perPage: 8,
-  //   current: 1,
-  //   max: 1,
-  //   display: [1],
-  // });
-
-  // Whenever the resources change (for example by searching)
-  // the nr of max pages is calculated again. Also the display array
-  // needed to render the buttons is created again, based on the new
-  // number of pages.
-  // useEffect(() => {
-  //   const maxPages = Math.ceil(resources.length / pagination.perPage);
-  //   let pageDisplay = [];
-  //   for (let i = 1; i <= maxPages; i++) {
-  //     pageDisplay.push(i);
-  //   }
-  //   setPagination({ ...pagination, max: maxPages, display: pageDisplay });
-  // }, [resources]);
-
-  // function handlePageChange(e) {
-  //   setPagination({
-  //     ...pagination,
-  //     current: parseInt(e.target.id.replace("page-", "")),
-  //   });
-  // }
 
   return (
     <React.Fragment>
@@ -78,47 +44,35 @@ const Content = ({ getResources, resources, filter }) => {
       {error === {} ? <NotFound /> : <Filter />}
       <Grid doubling padded columns={2} className="references-container">
         <Grid.Row>
-          <Grid.Column>
-            <Header as="h2" className="resources-title">
-              RESOURCES
-            </Header>
-            <Link to="/add_resource">
-              <Button
-                style={{ width: "150px" }}
-                content="Add Resource"
-                icon="add circle"
-                labelPosition="left"
-                primary
-              />
-            </Link>
+          <Grid.Column
+            style={{
+              marginTop: "1em",
+            }}
+          >
+            <Button
+              style={{
+                width: "200px",
+                height: "80px",
+                color: "var(--violett-dark)",
+              }}
+              content="Add Resource"
+              icon="add circle"
+              labelPosition="left"
+              primary
+              floated="right"
+              marginTop="2em !important"
+              onClick={() => {
+                logIn ? history.push("/add_resource") : history.push("/login");
+              }}
+            />
+
             <section className="pagination">
               Found <strong>{resources.length}</strong> Entries
-              {/* {pagination.current} of {pagination.max} /
-              <Pagination
-                boundaryRange={0}
-                defaultActivePage={1}
-                siblingRange={0}
-                totalPages={pagination.max}
-              /> */}
-              {/* {pagination.display.map((index) => {
-                return (
-                  <Fragment>
-                    <button
-                      key={index}
-                      id={"page-" + index}
-                      onClick={handlePageChange}
-                      className={index === pagination.current ? "active" : null}
-                    >
-                      {index}
-                    </button>
-                  </Fragment>
-                );
-              })} */}
             </section>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          {resources.map((item, index) => {
+          {searchedResources.map((item) => {
             let showByCategory = false;
             let showByRating = false;
             let showByCost = false;
@@ -145,25 +99,10 @@ const Content = ({ getResources, resources, filter }) => {
             if (Math.floor(item.rating) >= filter.rating) {
               showByRating = true;
             }
-
-            // FILTER BY CURRENT PAGE
-            // page 1 -- index: 0-7
-            // page 2 -- index: 8-15
-            // let start = (pagination.current - 1) * pagination.perPage;
-            // let end = pagination.current * pagination.perPage - 1;
-            // if (index >= start && index <= end) {
-            //   showByCurrentPage = true;
-            // }
-            // If resource matches all filter criteria, it is displayed
-            if (
-              showByCost &&
-              showByRating &&
-              showByCategory
-              // && showByCurrentPage
-            )
+            if (showByCost && showByRating && showByCategory)
               return (
                 <Grid.Column key={item._id}>
-                  <Resource id={item._id} data={item} author="false" />
+                  <Resource id={item._id} data={item} />
                 </Grid.Column>
               );
             return "";

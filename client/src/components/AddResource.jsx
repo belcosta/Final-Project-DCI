@@ -20,6 +20,8 @@ export default function AddResource() {
     user: user,
     category: [],
     paid: false,
+    num_ratings: 1,
+    rating: 5,
   });
   const [categories, setCategories] = useState([
     "frontend",

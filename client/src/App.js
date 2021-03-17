@@ -24,7 +24,8 @@ export default function App() {
 
       <Switch>
         <main>
-          <Route path="/home" component={Home} />
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/home" component={Content} />
           <Route
             exact
             path="/resources/resource/:resourceId"
@@ -33,7 +34,6 @@ export default function App() {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
-          <Route path="/" exact={true} component={Content} />
           <Route path="/about" component={About} />
           <Route path="/add_resource" component={AddResource} />
           <Route path="/my_resources" component={MyResources} />

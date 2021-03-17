@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateData } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, TextArea, Card, Popup } from "semantic-ui-react";
 
@@ -18,6 +18,7 @@ export default function CreateComment({
     resource: resourceId,
   });
   const dispatch = useDispatch();
+  const history = useHistory();
   function openCom(newValue) {
     showMakeComm(newValue);
   }
@@ -45,32 +46,22 @@ export default function CreateComment({
     <Popup
       trigger={
         <div style={{ margin: "auto" }}>
-          {logIn ? (
-            <div
-              onClick={() => {
+          <div
+            onClick={() => {
+              if (logIn) {
                 openCom(!makeCom);
-              }}
-            >
-              <span style={{ fontSize: "20px" }}>
-                <i
-                  style={{ margin: "5px" }}
-                  class="comment alternate outline icon"
-                ></i>
-              </span>
-            </div>
-          ) : (
-            <Link
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "30px",
-                fontSize: "20px",
-              }}
-              to="/login"
-            >
-              You must be logged in to post a comment{" "}
-            </Link>
-          )}
+              } else {
+                history.push("/login");
+              }
+            }}
+          >
+            <span style={{ fontSize: "20px" }}>
+              <i
+                style={{ margin: "5px", cursor: "pointer" }}
+                className="comment alternate outline icon"
+              ></i>
+            </span>
+          </div>
           {makeCom && (
             <Form onSubmit={(e) => addComment(e)}>
               {" "}

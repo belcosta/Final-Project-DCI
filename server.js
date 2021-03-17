@@ -75,6 +75,7 @@ if (process.env.NODE_ENV === "production") {
 // middleware to deploy on Heroku
 app.use(express.static(path.join(__dirname, "client", "build")));
 
+
 ///All routes
 
 //register user
@@ -85,21 +86,21 @@ app.post("/register", async (req, res, next) => {
   req.check("name", "invalid name").isLength({ min: 3 });
   req.check("userName", "invalid userName").isLength({ min: 3 });
   req
-    .check("email")
-    .isEmail()
-    .withMessage("Email is not correct")
-    .normalizeEmail()
-    .withMessage("email not normalized")
-    .custom(function () {
-      if (users.length) {
-        return false;
-      } else {
-        return true;
-      }
-    })
-    .withMessage("This email is taken!");
+  .check("email")
+  .isEmail()
+  .withMessage("Email is not correct")
+  .normalizeEmail()
+  .withMessage("email not normalized")
+  .custom(function () {
+    if (users.length) {
+      return false;
+    } else {
+      return true;
+    }
+  })
+  .withMessage("This email is taken!");
   req.check("password", "invalid Password").isLength({ min: 3 });
-
+  
   let errors = req.validationErrors();
   //console.log(errors);
   if (errors) {
@@ -118,15 +119,15 @@ app.post("/register", async (req, res, next) => {
             password: hash,
           });
           instance
-            .save()
-            .then((result) => {
-              console.log(result);
-              res.send(result);
-            })
-            .catch((err) => {
-              console.log(err);
-              res.send(err);
-            });
+          .save()
+          .then((result) => {
+            console.log(result);
+            res.send(result);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.send(err);
+          });
         }
       });
     });
@@ -139,24 +140,24 @@ app.post("/login", (req, res) => {
   User.findOne({
     userName: newUser.username,
   })
-
-    .then((result) => {
-      bcrypt.compare(newUser.password, result.password, function (err, output) {
-        if (err) {
-          console.log(err);
-        } else {
-          req.session.user = result;
-          res.json({
-            userSession: req.session.user,
-            logIn: output,
-            user: result,
-          });
-        }
-      });
-    })
-    .catch((err) => {
-      res.send(err);
+  
+  .then((result) => {
+    bcrypt.compare(newUser.password, result.password, function (err, output) {
+      if (err) {
+        console.log(err);
+      } else {
+        req.session.user = result;
+        res.json({
+          userSession: req.session.user,
+          logIn: output,
+          user: result,
+        });
+      }
     });
+  })
+  .catch((err) => {
+    res.send(err);
+  });
 });
 
 //profile route GET to display the user data
@@ -165,11 +166,11 @@ app.get("/profile", (req, res, next) => {
   let displayUser = req.body;
   console.log(displayUser);
   User.findOne({ email: req.session.user.email })
-    .select("name userName email password")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => res.send(err));
+  .select("name userName email password")
+  .then((result) => {
+    res.send(result);
+  })
+  .catch((err) => res.send(err));
 });
 
 //profile update the user data
@@ -189,51 +190,52 @@ app.put("/update", (req, res, next) => {
             email: updateUser.email,
             password: hash,
           }
-        )
+          )
           .then((result) => {
             res.send(result);
           })
           .catch((err) => {
             res.send(err);
           });
-      }
+        }
+      });
     });
   });
-});
-
-//delete profile
-app.delete("/delete/:user_id", (req, res) => {
-  let userId = req.params.user_id;
-  User.findByIdAndDelete(userId)
+  
+  //delete profile
+  app.delete("/delete/:user_id", (req, res) => {
+    let userId = req.params.user_id;
+    User.findByIdAndDelete(userId)
     .then((response) => {
       req.session.destroy();
       res.send({ msg: "your profile was successfully deleted" });
     })
     .catch((err) => res.send(err));
-});
-
-app.delete("/logout", (req, res, next) => {
-  req.session.destroy();
-  sessionStorage.clear();
-  res.sendStatus(204);
-  User.findByIdAndUpdate(
-    { email: newUser.email },
-    {
-      name: newUser.name,
-      userName: newUser.userName,
-      email: newUser.email,
-      password: newUser.password,
-    }
-  )
-    .then((result) => res.sed(result))
-    .catch((err) => res.send(err));
-});
-
-connectDB();
-
-//added to deploy on heroku
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-
-app.listen(PORT, () => console.log(`Server started on Port ${PORT}`));
+  });
+  
+  app.delete("/logout", (req, res, next) => {
+    req.session.destroy();
+    sessionStorage.clear();
+    res.sendStatus(204);
+    User.findByIdAndUpdate(
+      { email: newUser.email },
+      {
+        name: newUser.name,
+        userName: newUser.userName,
+        email: newUser.email,
+        password: newUser.password,
+      }
+      )
+      .then((result) => res.sed(result))
+      .catch((err) => res.send(err));
+    });
+    
+    connectDB();
+    
+    //added to deploy on heroku
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
+    
+        app.listen(PORT, () => console.log(`Server started on Port ${PORT}`));
+    

@@ -11,52 +11,6 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // Navigation for Dropdown menu (tablet/computer view)
-  const move = (e, { value }) => {
-    if (value === "/signout") {
-      e.preventDefault();
-      dispatch(userLogout());
-    }
-    history.push(value);
-  };
-
-  // Label for Dropdown menu (tablet/computer view)
-  const trigger = (
-    <span className="dropdown-label">
-      <Icon name="user" /> {user.name}
-    </span>
-  );
-
-  // Content for Dropdown menu (tablet/computer view)
-  const loggedOptions = [
-    {
-      key: "account",
-      text: (
-        <strong>
-          <Icon name="setting" />
-          Settings
-        </strong>
-      ),
-      disabled: true,
-    },
-    { key: "profile", text: "My Profile", value: "/profile" },
-    {
-      key: "resources",
-      text: "My Resources",
-      value: "/my_resources",
-    },
-    { key: "comments", text: "My Comments", value: "/my_comments" },
-    {
-      key: "signout",
-      text: (
-        <span>
-          <Icon name="sign-out" />
-          Sign Out
-        </span>
-      ),
-      value: "/signout",
-    },
-  ];
   return (
     <Grid
       verticalAlign="middle"
@@ -66,22 +20,26 @@ export default function Navbar() {
       className="app-header"
     >
       <Grid.Row>
+        <Grid.Column width={14} only="mobile">
+          <Link to="/">
+            <Header as="h1">Student Companion</Header>
+          </Link>
+        </Grid.Column>
         <Grid.Column textAlign={"center"} width={2} only="mobile">
-          <Dropdown
-            item
-            icon="bars"
-            simple
-            // onChange={move}
-            // options={loggedOptions}
-          >
-            <Dropdown.Menu>
-              <Dropdown.Item disabled>
-                <span>
+          <Dropdown item icon="bars" simple pointing="right">
+            <Dropdown.Menu
+              style={{
+                margin: "1rem -1rem",
+                backgroundColor: "var(--yellow-light",
+              }}
+            >
+              <Dropdown.Item>
+                <span style={{ color: "var(--violett-dark)" }}>
                   <Icon name="user" /> Hello, {user.name ? user.name : "Guest"}
                 </span>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/home">
+                <Link to="/">
                   <Icon name="home" />
                   Home
                 </Link>
@@ -93,9 +51,9 @@ export default function Navbar() {
                 </Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/">
+                <Link to="/home">
                   <Icon name="book" />
-                  Material
+                  Resources
                 </Link>
               </Dropdown.Item>
               {logIn ? (
@@ -114,7 +72,7 @@ export default function Navbar() {
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/my_comments">
-                      <Icon name="comment" />
+                      <Icon name="comments" />
                       My Comments
                     </Link>
                   </Dropdown.Item>
@@ -151,11 +109,6 @@ export default function Navbar() {
             </Dropdown.Menu>
           </Dropdown>
         </Grid.Column>
-        <Grid.Column width={14} only="mobile">
-          <Link to="/">
-            <Header as="h1">Student Companion</Header>
-          </Link>
-        </Grid.Column>
 
         <Grid.Column floated="left" width={7} only="tablet computer">
           <Link to="/">
@@ -172,7 +125,7 @@ export default function Navbar() {
         >
           <Menu compact secondary>
             <Menu.Item>
-              <Link to="/home">
+              <Link to="/">
                 <Icon name="home" />
                 Home
               </Link>
@@ -184,36 +137,65 @@ export default function Navbar() {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/">
+              <Link to="/home">
                 <Icon name="book" />
-                Learn
+                Resources
               </Link>
             </Menu.Item>
             {logIn ? (
-              <React.Fragment>
-                <Menu.Item>
-                  <Dropdown
-                    // item
-                    // simple
-                    trigger={trigger}
-                    onChange={move}
-                    options={loggedOptions}
-                  />
-                </Menu.Item>
-                {/* <Menu.Item>
-                  <a
-                    href="/logout"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log("LOGOUT!");
-                      dispatch(userLogout());
+              <Menu.Item>
+                <Dropdown
+                  className="dropdown-label"
+                  text={`Hello ${user.name}`}
+                  icon="user"
+                  simple
+                >
+                  <Dropdown.Menu
+                    style={{
+                      backgroundColor: "var(--yellow-light)",
+                      border: "none",
+                      margin: " -2rem ",
                     }}
                   >
-                    <Icon name="logout" />
-                    Logout
-                  </a>
-                </Menu.Item> */}
-              </React.Fragment>
+                    <Dropdown.Item>
+                      <span style={{ color: "var(--violett-dark)" }}>
+                        <Icon name="user" /> Hello,{" "}
+                        {user.name ? user.name : "Guest"}
+                      </span>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/profile">
+                        <Icon name="user circle" />
+                        Profile
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/my_resources">
+                        <Icon name="star" />
+                        My Resources
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/my_comments">
+                        <Icon name="comments" />
+                        My Comments
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        onClick={(e) => {
+                          e.preventDefault();
+                          history.push("/");
+                          dispatch(userLogout());
+                        }}
+                      >
+                        <Icon name="logout" />
+                        Logout
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Menu.Item>
             ) : (
               <React.Fragment>
                 <Menu.Item>

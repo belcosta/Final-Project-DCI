@@ -18,35 +18,49 @@ function About() {
       </div>
       <Grid columns={2} divided>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column mobile={16} tablet={4} computer={4}>
             <Image
               style={{
                 height: "50vh",
                 margin: "auto",
-                marginTop: "30px",
+                marginLeft: "25%",
+                marginTop: "80px",
                 borderRadius: "5px",
               }}
               src="/images/graduation.svg"
             />
           </Grid.Column>
           <Grid.Column
-            width={5}
-            style={{ marginTop: "40px", color: "whitesmoke" }}
+            width={7}
+            style={{ marginTop: "40px", color: "whitesmoke", margin: "auto" }}
           >
             <Header style={{ textAlign: "center", color: "white" }}>
               About
             </Header>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore,
-            maxime eveniet sed omnis nobis sequi error nulla reprehenderit odio
-            libero! Officiis repellendus cum debitis soluta, eum distinctio sunt
-            dignissimos libero? Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Provident laboriosam, natus, quisquam atque totam,
-            maxime sit error consectetur maiores nobis ipsum. Doloremque hic
-            veniam quis cum sequi dolorum quo magnam. dignissimos libero? Lorem,
-            ipsum dolor sit amet consectetur adipisicing elit. Provident
-            laboriosam, natus, quisquam atque totam, maxime sit error
-            consectetur maiores nobis ipsum. Doloremque hic veniam quis cum
-            sequi dolorum quo magnam.
+            Studying and learning about Web Development can be difficult and
+            overwhelming, especially at the beginning. There is so much
+            information about web development out there and it can be
+            challenging to distinguish between the helpful and unhelpful
+            resources on the internet.The Student Companion is a platform that
+            allows web development students to search, find and exchange
+            resources such as useful websites, tutorials, courses, blogs,
+            videos, new libraries, and much more about coding and programming.
+            We believe that everyone who starts coding and programming should
+            have access to a platform that provides reliable guidance and allows
+            you to find the resources that are helpful for you.This is why we
+            decided to build a new and unique platform that gives the current
+            and future students at the DCI the tools to inform and educate
+            themselves further according to the curriculum of the DCI. At The
+            Student Companion, we are dedicated to making life easy for future
+            web developers and our goal is to change the way that students at
+            the Digital Career Institute exchange experiences, communicate, and
+            collaborate with each other.With the Student Companion as our final
+            project, we were given the opportunity to apply the skills we
+            learned in the last year and the possibility to give something back
+            to the DCI, something made by students for students.For the future,
+            we hope that our community will contribute to the Student Companion
+            to help us in our mission of becoming a platform where you can find
+            all the useful and helpful information in just one place.
             <Divider style={{ color: "white" }} horizontal>
               Technologies
             </Divider>
@@ -134,9 +148,8 @@ function About() {
                 <Image
                   style={{
                     objectFit: "cover",
-                    height: "22vh",
                   }}
-                  src="/images/jose.jpg"
+                  src="/images/Jose.jpg"
                   size="small"
                   circular
                   centered
@@ -162,11 +175,7 @@ function About() {
                 </Item>
               </Item>
               <Item>
-                <Image
-                  src="https://react.semantic-ui.com/images/wireframe/square-image.png"
-                  size="small"
-                  circular
-                />
+                <Image src="/images/bel.jpg" size="small" circular />
                 <Header style={{ color: "white" }} textAlign="center">
                   Isabel Costa
                 </Header>
@@ -188,7 +197,7 @@ function About() {
               </Item>
               <Item>
                 <Image
-                  style={{ height: "22vh", objectFit: "cover" }}
+                  style={{ objectFit: "cover" }}
                   src="/images/christian.jpg"
                   size="small"
                   circular
@@ -204,7 +213,13 @@ function About() {
                 >
                   <Icon name="github" size="large" />
                 </Item>
-                <Icon name="linkedin" size="large" />
+                <Item
+                  as="a"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/christian-heinrich-39b91b14/"
+                >
+                  <Icon name="linkedin" size="large" />
+                </Item>
               </Item>
             </Grid.Row>
           </Grid>

@@ -19,12 +19,15 @@ export default function DisplayComments({ comments, displayCom, showComm }) {
         {
           <Fragment>
             <Button
-              style={{ marginTop: "15px" }}
+              style={{
+                marginTop: "15px",
+                backgroundColor: "var(--yellow-light)",
+              }}
               onClick={() => {
                 showComm(!displayCom);
               }}
             >
-              show comments {parseInt(comments.length)} Comments{" "}
+              {parseInt(comments.length)} Comments{" "}
             </Button>
           </Fragment>
         }

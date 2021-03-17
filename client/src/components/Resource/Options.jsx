@@ -35,8 +35,8 @@ export default function Options({ resource }) {
   const history = useHistory();
 
   //alert to confirm that link was copied
-  const notify = () => {
-    toast.success("The link was copied!", {
+  const notify = (txt) => {
+    toast.success(`${txt}`, {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 1000,
     });
@@ -46,26 +46,23 @@ export default function Options({ resource }) {
   const handle = (e, value) => {
     console.log("handle", e.target);
     if (value === "edit") {
-      console.log("edit", e.target);
       history.push(`/update_resource/${resource._id}`);
     }
     if (value === "delete") {
-      console.log("delete", e.target);
       setDeleteModal(true);
     }
     if (value === "share") {
-      console.log("share", e.target);
       var url = `https://webdevelop-student-companion.herokuapp.com/resources/resource/${resource._id}`;
       navigator.clipboard.writeText(url);
-      notify();
+      notify("The link was copied!");
     }
     //updating property "reported" to true
     if (value === "report") {
-      console.log("resport");
       if (logIn) {
         setFirstOpen(true);
         setResourceData({ ...resource, reported: true });
       } else {
+        notify("you need to log in first");
         history.push("/login");
       }
     }
@@ -118,23 +115,33 @@ export default function Options({ resource }) {
           marginRight: "0.3rem",
         }}
       >
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={(e) => handle(e, "share")}>
-            <Icon name="share"></Icon>Copy link
-          </Dropdown.Item>
-          <Dropdown.Item onClick={(e) => handle(e, "edit")}>
-            {" "}
-            <Icon name="edit"></Icon>Edit
-          </Dropdown.Item>
-          <Dropdown.Item onClick={(e) => handle(e, "delete")}>
-            {" "}
-            <Icon name="trash alternate outline"></Icon>Remove Post
-          </Dropdown.Item>
-          <Dropdown.Item onClick={(e) => handle(e, "report")}>
-            {" "}
-            <Icon name="attention"></Icon>Report
-          </Dropdown.Item>
-        </Dropdown.Menu>
+        {user._id !== resource.user._id ? (
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={(e) => handle(e, "share")}>
+              <Icon name="share"></Icon>Copy link
+            </Dropdown.Item>
+            <Dropdown.Item onClick={(e) => handle(e, "report")}>
+              {" "}
+              <Icon name="attention"></Icon>Report
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        ) : (
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={(e) => handle(e, "share")}>
+              <Icon name="share"></Icon>Copy link
+            </Dropdown.Item>
+            <Dropdown.Item onClick={(e) => handle(e, "report")}>
+              {" "}
+              <Icon name="attention"></Icon>Report
+            </Dropdown.Item>
+            <Dropdown.Item onClick={(e) => handle(e, "edit")}>
+              <Icon name="edit"></Icon>Edit
+            </Dropdown.Item>
+            <Dropdown.Item onClick={(e) => handle(e, "delete")}>
+              <Icon name="trash alternate outline"></Icon>Remove Post
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        )}
       </Dropdown>
 
       <ModalBox

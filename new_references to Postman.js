@@ -7,7 +7,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend"],
     "rating": 1,
-    "num_ratings": 102797,
+    "num_ratings": 1,
     "num_views": 349813,
     "paid": false,
     "description":
@@ -24,7 +24,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["backend"],
     "rating": 1,
-    "num_ratings": 250,
+    "num_ratings": 1,
     "num_views": 137456,
     "paid": false,
     "description":
@@ -39,7 +39,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["database"],
     "rating": 2,
-    "num_ratings": 3500,
+    "num_ratings": 1,
     "num_views": 1384745,
     "paid": false,
     "description":
@@ -54,7 +54,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["backend"],
     "rating": 2,
-    "num_ratings": 137,
+    "num_ratings": 1,
     "num_views": 0,
     "paid": false,
     "description":
@@ -71,7 +71,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["backend"],
     "rating": 3,
-    "num_ratings": 437,
+    "num_ratings": 1,
     "num_views": 112394,
     "paid": false,
     "description":
@@ -86,7 +86,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["general"],
     "rating": 3,
-    "num_ratings": 782,
+    "num_ratings": 1,
     "num_views": 10523,
     "paid": false,
     "description":
@@ -101,7 +101,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["general"],
     "rating": 4,
-    "num_ratings": 852,
+    "num_ratings": 1,
     "num_views": 11529,
     "paid": false,
     "description":
@@ -117,7 +117,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["backend", "frontend"],
     "rating": 4.5,
-    "num_ratings": 15985,
+    "num_ratings": 1,
     "num_views": 1589253,
     "paid": false,
     "description":
@@ -133,7 +133,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["backend", "frontend", "database"],
     "rating": 5,
-    "num_ratings": 8951,
+    "num_ratings": 1,
     "num_views": 0,
     "paid": false,
     "description":
@@ -150,7 +150,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["backend", "frontend", "database"],
     "rating": 5,
-    "num_ratings": 11152,
+    "num_ratings": 1,
     "num_views": 0,
     "paid": false,
     "description":
@@ -166,7 +166,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend"],
     "rating": 4.6,
-    "num_ratings": 138647,
+    "num_ratings": 1,
     "num_views": 459039,
     "paid": true,
     "description":
@@ -182,7 +182,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend", "backend"],
     "rating": 4.6,
-    "num_ratings": 623,
+    "num_ratings": 1,
     "num_views": 72447,
     "paid": true,
     "description":
@@ -198,7 +198,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["database"],
     "rating": 4.3,
-    "num_ratings": 524,
+    "num_ratings": 1,
     "num_views": 41946,
     "paid": false,
     "description":
@@ -214,7 +214,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["database"],
     "rating": 4.8,
-    "num_ratings": 322448,
+    "num_ratings": 1,
     "num_views": 981019,
     "paid": false,
     "description":
@@ -230,7 +230,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["machineLearning"],
     "rating": 4.5,
-    "num_ratings": 41838,
+    "num_ratings": 1,
     "num_views": 272307,
     "paid": false,
     "description":
@@ -246,7 +246,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["machineLearning"],
     "rating": 4.7,
-    "num_ratings": 23157,
+    "num_ratings": 1,
     "num_views": 165313,
     "paid": true,
     "description":
@@ -261,7 +261,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["database"],
     "rating": 4.1,
-    "num_ratings": 9395,
+    "num_ratings": 1,
     "num_views": 69752,
     "paid": false,
     "description":
@@ -277,7 +277,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["database"],
     "rating": 4.8,
-    "num_ratings": 3698,
+    "num_ratings": 1,
     "num_views": 105789,
     "paid": false,
     "description":
@@ -293,7 +293,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend", "backend", "database"],
     "rating": 4.7,
-    "num_ratings": 11413,
+    "num_ratings": 1,
     "num_views": 103123,
     "paid": false,
     "description":
@@ -308,7 +308,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend", "backend", "database"],
     "rating": 4.5,
-    "num_ratings": 9421,
+    "num_ratings": 1,
     "num_views": 54122,
     "paid": false,
     "description":
@@ -323,7 +323,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend"],
     "rating": 4.7,
-    "num_ratings": 6421,
+    "num_ratings": 1,
     "num_views": 360122,
     "paid": false,
     "description":
@@ -339,7 +339,7 @@
      "user": "60408472458f926b21f21c21",
     "category": ["frontend"],
     "rating": 4.8,
-    "num_ratings": 10421,
+    "num_ratings": 1,
     "num_views": 474115,
     "paid": true,
     "description":
@@ -359,7 +359,7 @@ export default fakeData;
    "user": "60408472458f926b21f21c21",
   "category": ["frontend"],
   "rating": 4.8,
-  "num_ratings": 10421,
+  "num_ratings": 1,
   "num_views": 474115,
   "paid": true,
   "description":

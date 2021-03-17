@@ -1,0 +1,12 @@
+.label-general{
+    background-color: var(--green-dark) !important;
+}
+.label-frontend{
+    background-color: #ffb142 !important;
+}
+.label-backend{
+    background-color: var(--green-light) !important;
+}
+.label-database{
+    background-color: var(--blue-light) !important;
+}
