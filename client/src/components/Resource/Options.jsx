@@ -110,7 +110,7 @@ export default function Options({ resource }) {
         pointing="right"
         className="link item"
         style={{
-          // backgroundColor: "var(--yellow-light)",
+          backgroundColor: "var(--yellow-light)",
           padding: "0.5rem",
           borderRadius: "10px",
           marginLeft: "15px",
