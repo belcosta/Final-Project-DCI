@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Comment from "./Comment";
 import { useSelector } from "react-redux";
-import { Button, Container } from "semantic-ui-react";
+import { Button, Container, Divider } from "semantic-ui-react";
 
 export default function DisplayComments({ comments, displayCom, showComm }) {
   const [commentsArray, setCommentsArray] = useState(comments);
@@ -14,7 +14,7 @@ export default function DisplayComments({ comments, displayCom, showComm }) {
   }, [update, showComm, comments]);
 
   return (
-    <Container>
+    <Container style={{ padding: "5px" }}>
       <span>
         {
           <Fragment>
@@ -40,8 +40,9 @@ export default function DisplayComments({ comments, displayCom, showComm }) {
         computer={9}
         style={{
           overflow: "scroll",
-          maxHeight: "180px",
-          minWidth: "240px",
+          maxHeight: "280px",
+          minHeigh: "200px",
+          minWidth: "290px",
           scrollBehavior: "smooth",
           marginTop: "20px",
         }}
@@ -49,7 +50,9 @@ export default function DisplayComments({ comments, displayCom, showComm }) {
         {displayCom && (
           <Fragment>
             {commentsArray.map((comment) => (
-              <Comment key={comment._id} data={comment}></Comment>
+              <Comment key={comment._id} data={comment}>
+                {" "}
+              </Comment>
             ))}
           </Fragment>
         )}

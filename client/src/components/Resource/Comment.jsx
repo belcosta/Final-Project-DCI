@@ -12,7 +12,7 @@ import {
   Input,
   Grid,
   Dropdown,
-  Item,
+  Divider,
 } from "semantic-ui-react";
 
 export default function Comment(props) {
@@ -78,8 +78,12 @@ export default function Comment(props) {
 
   return (
     <Grid divided="vertically">
+      <Divider />
       <Grid.Row
-        style={{ display: "flex", justifyContent: "space-around" }}
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+        }}
         column={2}
       >
         {props.data.user ? (
@@ -188,7 +192,9 @@ export default function Comment(props) {
         </Form>
       )}
 
-      {props.data.edited && <Card.Meta>Edited</Card.Meta>}
+      {props.data.edited && (
+        <Card.Meta style={{ marginTop: "-16px" }}>Edited</Card.Meta>
+      )}
     </Grid>
   );
 }
