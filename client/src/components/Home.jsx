@@ -51,12 +51,12 @@ const Home = ({ getDashboardData, dashboard }) => {
   }, []);
 
   return (
-    <Container fluid className="dashboard-container">
-      <Grid columns={2} padded className="dashboard-grid">
+    <Container fluid className='dashboard-container'>
+      <Grid columns={2} padded className='dashboard-grid'>
         <Grid.Row centered>
           <Grid.Column
             // className="dashboard-content"
-            className="dashboard-sidebar sidebar-left"
+            className='dashboard-sidebar sidebar-left'
             mobile={14}
             tablet={8}
             computer={12}
@@ -71,9 +71,9 @@ const Home = ({ getDashboardData, dashboard }) => {
                   <Grid.Row centered style={props}>
                     <Button
                       style={{ width: "150px", margin: "1em" }}
-                      content="See Resource"
-                      icon="linkify"
-                      labelPosition="left"
+                      content='See Resource'
+                      icon='linkify'
+                      labelPosition='left'
                       secondary
                       onClick={async () => {
                         await dispatch(filterCategory("general", true));
@@ -100,9 +100,9 @@ const Home = ({ getDashboardData, dashboard }) => {
                       mobile={14}
                       tablet={8}
                       computer={12}
-                      className="dashboard-frontend"
+                      className='dashboard-frontend'
                     >
-                      <Header as="h3">Frontend</Header>
+                      <Header as='h3'>Frontend</Header>
                       <Container>
                         <Button
                           style={{ margin: "10px" }}
@@ -114,12 +114,12 @@ const Home = ({ getDashboardData, dashboard }) => {
                             history.push("/home");
                           }}
                         >
-                          <Icon name="arrow right" />
+                          <Icon name='arrow right' />
                         </Button>
                         <img
-                          src="./illustrations/frontend3.svg"
-                          alt="Frontend Illustration"
-                          className="illustration"
+                          src='./illustrations/frontend3.svg'
+                          alt='Frontend Illustration'
+                          className='illustration'
                         />
                       </Container>
                     </Grid.Column>
@@ -135,9 +135,9 @@ const Home = ({ getDashboardData, dashboard }) => {
                           mobile={14}
                           tablet={4}
                           computer={6}
-                          className="dashboard-backend"
+                          className='dashboard-backend'
                         >
-                          <Header as="h3">Backend</Header>
+                          <Header as='h3'>Backend</Header>
                           <Container>
                             <Button
                               onClick={async () => {
@@ -154,12 +154,12 @@ const Home = ({ getDashboardData, dashboard }) => {
                                 history.push("/home");
                               }}
                             >
-                              <Icon name="arrow right" />
+                              <Icon name='arrow right' />
                             </Button>
                             <img
-                              src="./illustrations/backend.svg"
-                              alt="Backend Illustration"
-                              className="illustration"
+                              src='./illustrations/backend.svg'
+                              alt='Backend Illustration'
+                              className='illustration'
                             />
                           </Container>
                         </Grid.Column>
@@ -177,14 +177,14 @@ const Home = ({ getDashboardData, dashboard }) => {
                           mobile={14}
                           tablet={4}
                           computer={6}
-                          className="dashboard-database"
+                          className='dashboard-database'
                         >
-                          <Header as="h3">Database</Header>
+                          <Header as='h3'>Database</Header>
                           <Container>
                             <img
-                              src="./illustrations/database.svg"
-                              alt="Database Illustration"
-                              className="illustration"
+                              src='./illustrations/database.svg'
+                              alt='Database Illustration'
+                              className='illustration'
                             />
                             <Button
                               style={{ margin: "10px" }}
@@ -204,7 +204,7 @@ const Home = ({ getDashboardData, dashboard }) => {
                                 history.push("/home");
                               }}
                             >
-                              <Icon name="arrow right" />
+                              <Icon name='arrow right' />
                             </Button>
                           </Container>
                         </Grid.Column>
@@ -222,7 +222,7 @@ const Home = ({ getDashboardData, dashboard }) => {
             mobile={14}
             tablet={5}
             computer={4}
-            className="dashboard-sidebar sidebar-right"
+            className='dashboard-sidebar sidebar-right'
           >
             {" "}
             <Grid>
@@ -240,9 +240,9 @@ const Home = ({ getDashboardData, dashboard }) => {
                         color: "var(--violett-dark)",
                         backgroundColor: "var(--yellow-light)",
                       }}
-                      content="Add Resource"
-                      icon="add circle"
-                      labelPosition="left"
+                      content='Add Resource'
+                      icon='add circle'
+                      labelPosition='left'
                       onClick={() => {
                         console.log(logIn);
                         logIn
@@ -260,7 +260,7 @@ const Home = ({ getDashboardData, dashboard }) => {
               config={{ delay: 600, duration: 600 }}
             >
               {(props) => (
-                <Card centered style={props} className="addedResources">
+                <Card centered style={props} className='addedResources'>
                   <Card.Content>
                     <Card.Header>Recently added resources</Card.Header>
                   </Card.Content>
@@ -269,7 +269,7 @@ const Home = ({ getDashboardData, dashboard }) => {
                       {dashboard.map((activity) => {
                         return (
                           <Feed.Event>
-                            {/*  <Feed.Label image="./images/molly.png" /> */}
+                            <Feed.Label image='./images/molly.png' />
                             <Feed.Content>
                               <Feed.Date>
                                 {moment(activity.date).fromNow()}
@@ -305,7 +305,7 @@ const Home = ({ getDashboardData, dashboard }) => {
                         {comments.map((comment) => {
                           return (
                             <Feed.Event>
-                              <Feed.Label image="./images/matthew.png" />
+                              <Feed.Label image='./images/matthew.png' />
                               <Feed.Content>
                                 <Feed.Date>
                                   {moment(comment.date).fromNow()}
