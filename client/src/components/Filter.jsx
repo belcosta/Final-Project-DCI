@@ -27,7 +27,7 @@ export default function Filter() {
   let initialState = {
     free: true,
     paid: true,
-    rating: 0,
+    rating: 1,
     general: true,
     frontend: true,
     backend: true,
