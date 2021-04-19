@@ -256,7 +256,7 @@ function About() {
           </Grid>
           <Container fluid style={{ backgroundColor: "#ffde59" }}>
             <Image
-              style={{ margin: "auto", height: "51vh", objectFit: "fill" }}
+              style={{ margin: "auto", height: "50vh", objectFit: "fill" }}
               src="/images/footer.png"
             />
           </Container>
